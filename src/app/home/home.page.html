@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+    <ion-title class="custHeader">Shrine</ion-title>
+
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content >
+
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of jsonData">
+        <ion-card class="custCard">
+          <img src="{{item.url}}" style="width: 100%; height: 120px">
+          <ion-card-content style="text-align: start;">
+            <span class="custName">{{item.itemName}}</span><br>
+            <span class="custPrice">${{item.itemPrice}}</span>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles"
+        loadingText="Loading more data..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
